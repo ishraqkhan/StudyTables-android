@@ -2,6 +2,7 @@ package edu.purdue.cs.sigapp.studytables.classes.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -23,7 +24,7 @@ public class ClassesActivity extends AppCompatActivity {
         mockClassData();
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_purdue_classes);
         classAdapter = new ClassAdapter(mockedClasses);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(classAdapter);
     }
