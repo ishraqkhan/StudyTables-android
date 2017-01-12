@@ -34,7 +34,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.PurdueClassV
     @Override
     public void onBindViewHolder(PurdueClassViewHolder holder, int pos) {
         holder.classTitle.setText(classList.get(pos).getTitle());
-        holder.classCrn.setText(classList.get(pos).getNumber());
+        holder.classCrn.setText(classList.get(pos).getNumber()+"");
     }
 
     @Override

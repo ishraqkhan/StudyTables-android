@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import edu.purdue.cs.sigapp.studytables.R;
+import edu.purdue.cs.sigapp.studytables.classes.activity.ClassesActivity;
 
 /**
  * Use this as an example for referencing activities and features that don't exist yet.
@@ -37,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void openClassListActivity() {
         //TODO: The class list activity doesnt exist yet. Update this once it exists.
-        //Intent classListIntent = new Intent(this, ActivityName.class);
-        //startActivity(classListIntent);
+        Intent classListIntent = new Intent(this, ClassesActivity.class);
+        startActivity(classListIntent);
     }
 }
