@@ -25,20 +25,24 @@
                     android:id="@+id/class_crn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:textColor="@color/material_gold"/>
+                    android:textSize="20sp"
+                    android:textColor="@color/material_gold"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginStart="14dp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp">
+                android:layout_margin="12dp"
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/class_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/material_gold"/>
+                    android:textColor="@color/material_gold"
+                    android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
 
