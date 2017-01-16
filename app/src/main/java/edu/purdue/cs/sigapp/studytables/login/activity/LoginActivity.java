@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import edu.purdue.cs.sigapp.studytables.R;
+import edu.purdue.cs.sigapp.studytables.create.event.activity.CreateEventActivity;
 
 /**
  * Use this as an example for referencing activities and features that don't exist yet.
