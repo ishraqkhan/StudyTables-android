@@ -1,5 +1,7 @@
 package edu.purdue.cs.sigapp.studytables.classes.activity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -7,8 +9,11 @@ import java.util.ArrayList;
  */
 
 public class PurdueTerm {
+    @SerializedName("TermId")
     String termId;
+    @SerializedName("TermCode")
     String termCode;
+    @SerializedName("Name")
     String name;
     ArrayList<PurdueClass> classes;
 
