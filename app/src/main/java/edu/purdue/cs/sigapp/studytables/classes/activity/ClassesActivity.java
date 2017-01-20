@@ -3,7 +3,6 @@ package edu.purdue.cs.sigapp.studytables.classes.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
@@ -13,7 +12,7 @@ import java.util.List;
 import edu.purdue.cs.sigapp.studytables.R;
 import edu.purdue.cs.sigapp.studytables.client.ODataResponse;
 import edu.purdue.cs.sigapp.studytables.client.PurdueIOClient;
-import edu.purdue.cs.sigapp.studytables.client.SubjectApiInterface;
+import edu.purdue.cs.sigapp.studytables.interfaces.SubjectApiInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
