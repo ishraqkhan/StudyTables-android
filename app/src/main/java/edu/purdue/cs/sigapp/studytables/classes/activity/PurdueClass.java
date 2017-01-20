@@ -1,10 +1,22 @@
 package edu.purdue.cs.sigapp.studytables.classes.activity;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.UUID;
+
 /**
  * Created by mvieck on 1/11/17.
  */
 
 public class PurdueClass {
+
+    @SerializedName("ClassId")
+    private UUID classId;
+    @SerializedName("Course")
+    private PurdueCourse course;
+    @SerializedName("Term")
+    private PurdueTerm term;
+
     private int number;
     private String title;
     private float credits;

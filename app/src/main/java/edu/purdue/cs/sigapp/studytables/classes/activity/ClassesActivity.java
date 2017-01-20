@@ -12,7 +12,7 @@ import java.util.List;
 import edu.purdue.cs.sigapp.studytables.R;
 import edu.purdue.cs.sigapp.studytables.client.ODataResponse;
 import edu.purdue.cs.sigapp.studytables.client.PurdueIOClient;
-import edu.purdue.cs.sigapp.studytables.interfaces.SubjectApiInterface;
+import edu.purdue.cs.sigapp.studytables.interfaces.ApiInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,7 +21,7 @@ public class ClassesActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ClassAdapter classAdapter;
 
-    private SubjectApiInterface apiInterface;
+    private ApiInterface apiInterface;
     private List<PurdueClass> mockedClasses;
     private List<PurdueSubject> subjects;
 
@@ -29,7 +29,7 @@ public class ClassesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classes);
-        apiInterface = PurdueIOClient.getClient().create(SubjectApiInterface.class);
+        apiInterface = PurdueIOClient.getClient().create(ApiInterface.class);
         mockClassData();
         getPurdueIOSubjects();
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_purdue_classes);
@@ -44,6 +44,21 @@ public class ClassesActivity extends AppCompatActivity {
         mockedClasses.add(new PurdueClass(25000,"Computer Architecture", 5, "A class meant for learning assembly."));
         mockedClasses.add(new PurdueClass(24000,"Introduction To C", 3, "Introduction to C programming at Purdue."));
         mockedClasses.add(new PurdueClass(10100,"History 101", 5, "A class meant for learning history."));
+    }
+
+    private void getPurdueIOClasses() {
+        Call<ODataResponse<PurdueClass>> call = apiInterface.getAllClasses();
+        call.enqueue(new Callback<ODataResponse<PurdueClass>>() {
+            @Override
+            public void onResponse(Call<ODataResponse<PurdueClass>> call, Response<ODataResponse<PurdueClass>> response) {
+                mockedClasses = (List<PurdueClass>) response.body();
+            }
+
+            @Override
+            public void onFailure(Call<ODataResponse<PurdueClass>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void getPurdueIOSubjects() {

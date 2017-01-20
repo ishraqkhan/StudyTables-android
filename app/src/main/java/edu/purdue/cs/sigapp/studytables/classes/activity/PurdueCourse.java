@@ -1,5 +1,7 @@
 package edu.purdue.cs.sigapp.studytables.classes.activity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -8,12 +10,19 @@ import java.util.UUID;
  */
 
 public class PurdueCourse {
+    @SerializedName("CourseId")
     UUID courseId;
+    @SerializedName("Number")
     String number;
+    @SerializedName("Title")
     String title;
+    @SerializedName("CreditHours")
     double creditHours;
+    @SerializedName("Description")
     String description;
+    @SerializedName("Subject")
     PurdueSubject purdueSubject;
+    @SerializedName("Classes")
     ArrayList<PurdueClass> classes;
 
     public PurdueCourse() {
