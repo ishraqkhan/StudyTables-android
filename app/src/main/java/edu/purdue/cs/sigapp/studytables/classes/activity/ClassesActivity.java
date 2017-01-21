@@ -23,6 +23,7 @@ public class ClassesActivity extends AppCompatActivity {
 
     private ApiInterface apiInterface;
     private List<PurdueClass> mockedClasses;
+    private List<PurdueSubject> mockedSubjects;
     private List<PurdueSubject> subjects;
 
     @Override
@@ -33,17 +34,13 @@ public class ClassesActivity extends AppCompatActivity {
         mockClassData();
         getPurdueIOSubjects();
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_purdue_classes);
-        classAdapter = new ClassAdapter(mockedClasses);
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(classAdapter);
     }
 
     private void mockClassData() {
-        mockedClasses = new ArrayList<>();
-        mockedClasses.add(new PurdueClass(25000,"Computer Architecture", 5, "A class meant for learning assembly."));
-        mockedClasses.add(new PurdueClass(24000,"Introduction To C", 3, "Introduction to C programming at Purdue."));
-        mockedClasses.add(new PurdueClass(10100,"History 101", 5, "A class meant for learning history."));
+        mockedSubjects = new ArrayList<>();
+        mockedSubjects.add(new PurdueSubject("25000","Computer Science", "CS", new ArrayList<PurdueCourse>()));
+        mockedSubjects.add(new PurdueSubject("45000","Classics", "CLCS", new ArrayList<PurdueCourse>()));
+        mockedSubjects.add(new PurdueSubject("55000","History", "HIST", new ArrayList<PurdueCourse>()));
     }
 
     private void getPurdueIOClasses() {
@@ -51,7 +48,7 @@ public class ClassesActivity extends AppCompatActivity {
         call.enqueue(new Callback<ODataResponse<PurdueClass>>() {
             @Override
             public void onResponse(Call<ODataResponse<PurdueClass>> call, Response<ODataResponse<PurdueClass>> response) {
-                mockedClasses = (List<PurdueClass>) response.body();
+                mockedClasses = response.body().getTerms();
             }
 
             @Override
@@ -67,12 +64,16 @@ public class ClassesActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ODataResponse<PurdueSubject>> call, Response<ODataResponse<PurdueSubject>> response) {
                 subjects = response.body().getTerms();
-                Log.d("Subjects Response",subjects.size() + "");
+                Log.d("Subjects",subjects.size() + "");
+                classAdapter = new ClassAdapter(subjects);
+                GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
+                mRecyclerView.setLayoutManager(layoutManager);
+                mRecyclerView.setAdapter(classAdapter);
             }
 
             @Override
             public void onFailure(Call<ODataResponse<PurdueSubject>> call, Throwable t) {
-
+                Log.e("Subjects",t.getMessage());
             }
         });
     }

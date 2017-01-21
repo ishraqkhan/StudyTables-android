@@ -19,10 +19,10 @@ import edu.purdue.cs.sigapp.studytables.R;
 
 public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.PurdueClassViewHolder> {
 
-    List<PurdueClass> classList;
+    List<PurdueSubject> subjectList;
 
-    public ClassAdapter(List<PurdueClass> classList) {
-        this.classList = classList;
+    public ClassAdapter(List<PurdueSubject> subjectList) {
+        this.subjectList = subjectList;
     }
 
     @Override
@@ -33,13 +33,13 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.PurdueClassV
 
     @Override
     public void onBindViewHolder(PurdueClassViewHolder holder, int pos) {
-        holder.classTitle.setText(classList.get(pos).getTitle());
-        holder.classCrn.setText(classList.get(pos).getNumber()+"");
+        holder.classTitle.setText(subjectList.get(pos).getName());
+        holder.classCrn.setText(subjectList.get(pos).getAbbreviation());
     }
 
     @Override
     public int getItemCount() {
-        return classList.size();
+        return subjectList.size();
     }
 
     public static class PurdueClassViewHolder extends RecyclerView.ViewHolder {
