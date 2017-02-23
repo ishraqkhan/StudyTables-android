@@ -1,4 +1,4 @@
-package edu.purdue.cs.sigapp.studytables.classes.activity;
+package edu.purdue.cs.sigapp.studytables.client.model;
 
 import java.util.UUID;
 

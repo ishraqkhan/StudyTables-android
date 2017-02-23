@@ -1,9 +1,8 @@
-package edu.purdue.cs.sigapp.studytables.classes.activity;
+package edu.purdue.cs.sigapp.studytables.client.model;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 /**
  * Created by mvieck on 1/17/17.

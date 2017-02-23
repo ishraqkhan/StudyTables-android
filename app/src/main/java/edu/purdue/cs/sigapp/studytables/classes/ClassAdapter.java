@@ -1,4 +1,4 @@
-package edu.purdue.cs.sigapp.studytables.classes.activity;
+package edu.purdue.cs.sigapp.studytables.classes;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -7,11 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 import edu.purdue.cs.sigapp.studytables.R;
+import edu.purdue.cs.sigapp.studytables.client.model.PurdueSubject;
 
 /**
  * Created by mvieck on 1/11/17.

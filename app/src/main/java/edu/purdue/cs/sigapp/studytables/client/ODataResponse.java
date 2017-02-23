@@ -4,8 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import edu.purdue.cs.sigapp.studytables.classes.activity.PurdueTerm;
-
 /**
  * Created by mvieck on 1/19/17.
  */
