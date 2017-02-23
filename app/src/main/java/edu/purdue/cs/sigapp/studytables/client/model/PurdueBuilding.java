@@ -8,7 +8,6 @@ import java.util.UUID;
 /**
  * Created by mvieck on 1/20/17.
  */
-
 public class PurdueBuilding {
     @SerializedName("BuildingId")
     private UUID buildingId;

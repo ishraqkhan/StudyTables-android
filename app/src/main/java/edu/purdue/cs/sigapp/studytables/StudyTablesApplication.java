@@ -2,6 +2,10 @@ package edu.purdue.cs.sigapp.studytables;
 
 import android.app.Application;
 
+import com.joanzapata.iconify.Iconify;
+import com.joanzapata.iconify.fonts.MaterialCommunityModule;
+import com.joanzapata.iconify.fonts.MaterialModule;
+
 import net.danlew.android.joda.JodaTimeAndroid;
 
 /**
@@ -19,5 +23,11 @@ public class StudyTablesApplication extends Application {
 
         //The Jodetime library requires this init step to function.
         JodaTimeAndroid.init(this);
+
+        //This will allow us to reference a bunch of graphics
+        // and icons without needing to import all the raw files.
+        Iconify
+                .with(new MaterialModule())
+                .with(new MaterialCommunityModule());
     }
 }

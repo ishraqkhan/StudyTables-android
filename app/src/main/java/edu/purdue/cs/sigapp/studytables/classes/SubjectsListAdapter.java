@@ -10,18 +10,23 @@ import android.widget.TextView;
 import java.util.List;
 
 import edu.purdue.cs.sigapp.studytables.R;
+import edu.purdue.cs.sigapp.studytables.client.ODataResponse;
 import edu.purdue.cs.sigapp.studytables.client.model.PurdueSubject;
+import retrofit2.Callback;
 
 /**
  * Created by mvieck on 1/11/17.
  */
 
-public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.PurdueClassViewHolder> {
+public class SubjectsListAdapter
+        extends RecyclerView.Adapter<SubjectsListAdapter.PurdueClassViewHolder> {
 
+    private final OnSubjectClickedListener subjectClickListener;
     List<PurdueSubject> subjectList;
 
-    public ClassAdapter(List<PurdueSubject> subjectList) {
+    public SubjectsListAdapter(List<PurdueSubject> subjectList, OnSubjectClickedListener listener) {
         this.subjectList = subjectList;
+        this.subjectClickListener = listener;
     }
 
     @Override
@@ -31,9 +36,18 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.PurdueClassV
     }
 
     @Override
-    public void onBindViewHolder(PurdueClassViewHolder holder, int pos) {
+    public void onBindViewHolder(final PurdueClassViewHolder holder, final int pos) {
         holder.classTitle.setText(subjectList.get(pos).getName());
         holder.classCrn.setText(subjectList.get(pos).getAbbreviation());
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                subjectClickListener
+                        .onSubjectClicked(subjectList
+                                .get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
