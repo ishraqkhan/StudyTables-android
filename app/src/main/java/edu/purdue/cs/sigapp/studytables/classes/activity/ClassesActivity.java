@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.cs.sigapp.studytables.R;
+import edu.purdue.cs.sigapp.studytables.classes.ClassAdapter;
 import edu.purdue.cs.sigapp.studytables.client.ODataResponse;
 import edu.purdue.cs.sigapp.studytables.client.PurdueIOClient;
 import edu.purdue.cs.sigapp.studytables.client.model.PurdueClass;
