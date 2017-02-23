@@ -13,6 +13,8 @@ import edu.purdue.cs.sigapp.studytables.client.model.PurdueTerm;
 import edu.purdue.cs.sigapp.studytables.client.ODataResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by mvieck on 1/18/17.
@@ -25,6 +27,10 @@ public interface ApiInterface {
     Call<ODataResponse<PurdueSubject>> getAllSubjects();
     @GET("Courses")
     Call<ODataResponse<PurdueCourse>> getAllCourses();
+
+    @GET("Courses")
+    Call<ODataResponse<PurdueCourse>> getAllCoursesForSubject(@Query("$filter") String filterString);
+
     @GET("Classes")
     Call<ODataResponse<PurdueClass>> getAllClasses();
     @GET("Sections")

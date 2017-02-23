@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.cs.sigapp.studytables.R;
+import edu.purdue.cs.sigapp.studytables.classes.CoursesListAdapter;
+import edu.purdue.cs.sigapp.studytables.classes.OnCourseClickListener;
 import edu.purdue.cs.sigapp.studytables.classes.OnSubjectClickedListener;
 import edu.purdue.cs.sigapp.studytables.classes.SubjectsListAdapter;
 import edu.purdue.cs.sigapp.studytables.client.ODataResponse;
@@ -29,45 +31,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ClassesActivity extends AppCompatActivity implements OnSubjectClickedListener {
+public class ClassesActivity extends AppCompatActivity implements OnSubjectClickedListener, OnCourseClickListener {
     private RecyclerView mRecyclerView;
     private SubjectsListAdapter subjectsListAdapter;
 
     private ApiInterface apiInterface;
-    private List<PurdueClass> mockedClasses;
-    private List<PurdueSubject> mockedSubjects;
     private List<PurdueSubject> subjects;
-    private FloatingActionButton fab;
+
+    private CoursesListAdapter coursesListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classes);
         apiInterface = PurdueIOClient.getClient().create(ApiInterface.class);
-        initMockClassData();
 
         initRecyclerView();
 
         loadPurdueIOSubjects();
-
-        initFab();
-    }
-
-    private void initFab() {
-        this.fab = (FloatingActionButton) findViewById(R.id.fab_classlist_details);
-        this.fab.setImageDrawable(new IconDrawable(this, MaterialIcons.md_info)
-                .colorRes(android.R.color.white)
-                .actionBarSize());
-
-        this.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ClassesActivity.this, "This simulates clicking a class in the list. This FAB will not be the final way to do this.", Toast.LENGTH_LONG).show();
-
-                Intent classListIntent = new Intent(ClassesActivity.this, ClassDetailsActivity.class);
-                startActivity(classListIntent);
-            }
-        });
     }
 
     private void initRecyclerView() {
@@ -76,24 +57,21 @@ public class ClassesActivity extends AppCompatActivity implements OnSubjectClick
         mRecyclerView.setLayoutManager(layoutManager);
     }
 
-    private void initMockClassData() {
-        mockedSubjects = new ArrayList<>();
-        mockedSubjects.add(new PurdueSubject("25000","Computer Science", "CS", new ArrayList<PurdueCourse>()));
-        mockedSubjects.add(new PurdueSubject("45000","Classics", "CLCS", new ArrayList<PurdueCourse>()));
-        mockedSubjects.add(new PurdueSubject("55000","History", "HIST", new ArrayList<PurdueCourse>()));
-    }
-
-    private void getPurdueIOClasses() {
-        Call<ODataResponse<PurdueClass>> call = apiInterface.getAllClasses();
-        call.enqueue(new Callback<ODataResponse<PurdueClass>>() {
+    private void getPurdueIOClassesForSubject(PurdueSubject subject) {
+        Call<ODataResponse<PurdueCourse>> call = apiInterface
+                .getAllCoursesForSubject("Subject/Abbreviation eq '"+subject.getAbbreviation()+"'");
+        call.enqueue(new Callback<ODataResponse<PurdueCourse>>() {
             @Override
-            public void onResponse(Call<ODataResponse<PurdueClass>> call, Response<ODataResponse<PurdueClass>> response) {
-                mockedClasses = response.body().getTerms();
+            public void onResponse(Call<ODataResponse<PurdueCourse>> call, Response<ODataResponse<PurdueCourse>> response) {
+                List<PurdueCourse> courses = response.body().getTerms();
+
+                coursesListAdapter = new CoursesListAdapter(courses, ClassesActivity.this);
+                mRecyclerView.swapAdapter(coursesListAdapter, true);
             }
 
             @Override
-            public void onFailure(Call<ODataResponse<PurdueClass>> call, Throwable t) {
-
+            public void onFailure(Call<ODataResponse<PurdueCourse>> call, Throwable t) {
+                //TODO: Handle failure.
             }
         });
     }
@@ -112,6 +90,7 @@ public class ClassesActivity extends AppCompatActivity implements OnSubjectClick
             @Override
             public void onFailure(Call<ODataResponse<PurdueSubject>> call, Throwable t) {
                 Log.e("Subjects",t.getMessage());
+                //TODO: Handle failure.
             }
         });
     }
@@ -119,8 +98,13 @@ public class ClassesActivity extends AppCompatActivity implements OnSubjectClick
     @Override
     public void onSubjectClicked(PurdueSubject subject) {
         //empty the list of subjects.
-        //getPurdueIOClasses(); //this will fill on complete.
 
-        Toast.makeText(this, "The subject was clicked. Open the class list now", Toast.LENGTH_SHORT).show();
+        getPurdueIOClassesForSubject(subject);
+    }
+
+    @Override
+    public void onCourseClicked(PurdueCourse course) {
+        Intent classListIntent = new Intent(this, ClassDetailsActivity.class);
+        startActivity(classListIntent);
     }
 }

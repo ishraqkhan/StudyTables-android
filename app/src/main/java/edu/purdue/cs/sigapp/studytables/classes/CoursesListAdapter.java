@@ -10,22 +10,22 @@ import android.widget.TextView;
 import java.util.List;
 
 import edu.purdue.cs.sigapp.studytables.R;
-import edu.purdue.cs.sigapp.studytables.client.ODataResponse;
+import edu.purdue.cs.sigapp.studytables.client.model.PurdueClass;
+import edu.purdue.cs.sigapp.studytables.client.model.PurdueCourse;
 import edu.purdue.cs.sigapp.studytables.client.model.PurdueSubject;
-import retrofit2.Callback;
 
 /**
  * Created by mvieck on 1/11/17.
  */
 
-public class SubjectsListAdapter
+public class CoursesListAdapter
         extends RecyclerView.Adapter<PurdueClassViewHolder> {
 
-    private final OnSubjectClickedListener subjectClickListener;
-    List<PurdueSubject> subjectList;
+    private final OnCourseClickListener subjectClickListener;
+    List<PurdueCourse> courseList;
 
-    public SubjectsListAdapter(List<PurdueSubject> subjectList, OnSubjectClickedListener listener) {
-        this.subjectList = subjectList;
+    public CoursesListAdapter(List<PurdueCourse> courseList, OnCourseClickListener listener) {
+        this.courseList = courseList;
         this.subjectClickListener = listener;
     }
 
@@ -37,14 +37,14 @@ public class SubjectsListAdapter
 
     @Override
     public void onBindViewHolder(final PurdueClassViewHolder holder, final int pos) {
-        holder.classTitle.setText(subjectList.get(pos).getName());
-        holder.classCrn.setText(subjectList.get(pos).getAbbreviation());
+        holder.classTitle.setText(courseList.get(pos).getTitle());
+        holder.classCrn.setText(courseList.get(pos).getNumber());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 subjectClickListener
-                        .onSubjectClicked(subjectList
+                        .onCourseClicked(courseList
                                 .get(holder.getAdapterPosition()));
             }
         });
@@ -52,7 +52,7 @@ public class SubjectsListAdapter
 
     @Override
     public int getItemCount() {
-        return subjectList.size();
+        return courseList.size();
     }
 
 }

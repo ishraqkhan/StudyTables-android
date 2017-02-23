@@ -16,15 +16,4 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <!--This is mostly for debug to give a way to click
-    through the class list without needing to impl everything.-->
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_classlist_details"
-        app:fabSize="normal"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
 </RelativeLayout>
