@@ -1,18 +1,14 @@
 package edu.purdue.cs.sigapp.studytables.classes;
 
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.List;
 
 import edu.purdue.cs.sigapp.studytables.R;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueClass;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueCourse;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueSubject;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueCourse;
 
 /**
  * Created by mvieck on 1/11/17.

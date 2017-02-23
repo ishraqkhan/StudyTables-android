@@ -1,19 +1,12 @@
 package edu.purdue.cs.sigapp.studytables.classes.activity;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
-import com.joanzapata.iconify.IconDrawable;
-import com.joanzapata.iconify.fonts.MaterialIcons;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.purdue.cs.sigapp.studytables.R;
@@ -21,12 +14,11 @@ import edu.purdue.cs.sigapp.studytables.classes.CoursesListAdapter;
 import edu.purdue.cs.sigapp.studytables.classes.OnCourseClickListener;
 import edu.purdue.cs.sigapp.studytables.classes.OnSubjectClickedListener;
 import edu.purdue.cs.sigapp.studytables.classes.SubjectsListAdapter;
-import edu.purdue.cs.sigapp.studytables.client.ODataResponse;
-import edu.purdue.cs.sigapp.studytables.client.PurdueIOClient;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueClass;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueCourse;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueSubject;
-import edu.purdue.cs.sigapp.studytables.client.ApiInterface;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.ODataResponse;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.PurdueIOClient;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueCourse;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueSubject;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.ApiInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

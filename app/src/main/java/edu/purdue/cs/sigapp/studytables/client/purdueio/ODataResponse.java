@@ -1,4 +1,4 @@
-package edu.purdue.cs.sigapp.studytables.client;
+package edu.purdue.cs.sigapp.studytables.client.purdueio;
 
 import com.google.gson.annotations.SerializedName;
 

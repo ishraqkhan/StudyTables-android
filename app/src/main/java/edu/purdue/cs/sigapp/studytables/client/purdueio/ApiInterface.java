@@ -1,19 +1,17 @@
-package edu.purdue.cs.sigapp.studytables.client;
+package edu.purdue.cs.sigapp.studytables.client.purdueio;
 
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueBuilding;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueCampus;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueClass;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueCourse;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueInstructor;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueMeeting;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueRoom;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueSection;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueSubject;
-import edu.purdue.cs.sigapp.studytables.client.model.PurdueTerm;
-import edu.purdue.cs.sigapp.studytables.client.ODataResponse;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueBuilding;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueCampus;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueClass;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueCourse;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueInstructor;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueMeeting;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueRoom;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueSection;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueSubject;
+import edu.purdue.cs.sigapp.studytables.client.purdueio.model.PurdueTerm;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**

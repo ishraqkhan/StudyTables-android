@@ -1,4 +1,4 @@
-package edu.purdue.cs.sigapp.studytables.client;
+package edu.purdue.cs.sigapp.studytables.client.purdueio;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
