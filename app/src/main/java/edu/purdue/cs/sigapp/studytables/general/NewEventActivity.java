@@ -20,6 +20,7 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
     private Button mCreateButton, mCancelButton;
     private TextView timeTextView, titleTextView, locationTextView;
     private Spinner classListSpinner,timeListSpinner, repeatListSpinner, reminderSpinner;
+    public static final String EVENT_DATA_EXTRA = "new_event_data";
 
 
     @Override
@@ -71,8 +72,9 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
             NewEventData newEventData = new NewEventData(titleTextView.getText().toString(),
                     locationTextView.getText().toString(), classListSpinner.getSelectedItem().toString(),
                     "", "", "", "", "");
-            data.putExtra("new_event_data", newEventData);
+            data.putExtra(EVENT_DATA_EXTRA, newEventData);
             setResult(RESULT_OK, data);
+            finish();
         }
         else{
             throw new IllegalArgumentException("On click called from unknown view.");

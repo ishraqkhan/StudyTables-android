@@ -8,7 +8,7 @@ import android.os.Parcelable;
  */
 
 public class NewEventData implements Parcelable {
-    private String title, location, course, date, time, length, repeat, reminder;
+    public String title, location, course, date, time, length, repeat, reminder;
 
     public NewEventData(String title, String location, String course, String date, String time, String length, String repeat, String reminder){
         this.title = title;

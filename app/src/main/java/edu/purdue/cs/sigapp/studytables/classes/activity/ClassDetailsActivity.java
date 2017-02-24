@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -13,6 +14,8 @@ import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.fonts.MaterialIcons;
 
 import edu.purdue.cs.sigapp.studytables.R;
+import edu.purdue.cs.sigapp.studytables.general.NewEventActivity;
+import edu.purdue.cs.sigapp.studytables.general.NewEventData;
 import edu.purdue.cs.sigapp.studytables.scheduling.model.EventDetailsActivity;
 
 public class ClassDetailsActivity extends AppCompatActivity {
@@ -34,8 +37,8 @@ public class ClassDetailsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(ClassDetailsActivity.this, "This is where the new event activity will be called.", Toast.LENGTH_SHORT).show();
                 //This should use startActivityForResult to request an event to be created then return the event data to here.
-                //Intent classListIntent = new Intent(this, NewEventActivity.class);
-                //startActivityForResult();
+                Intent classListIntent = new Intent(ClassDetailsActivity.this, NewEventActivity.class);
+                startActivityForResult(classListIntent, ENTER_NEW_EVENT);
             }
         });
 
@@ -56,7 +59,9 @@ public class ClassDetailsActivity extends AppCompatActivity {
         if(requestCode == ENTER_NEW_EVENT) {
            if(resultCode == RESULT_OK) {
                //This means that the activity creating the event succeeded and the data will be in the Intent.
-               Bundle eventData = data.getExtras();
+               Bundle bundle = data.getExtras();
+               NewEventData eventData = bundle.getParcelable(NewEventActivity.EVENT_DATA_EXTRA);
+               Log.d("ClassDetailsActivity", "onActivityResult: " + eventData.title);
 
            }
         }
