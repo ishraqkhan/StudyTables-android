@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        timePicker1 = (TimePicker)findViewById(R.id.timePicker1);
         time = (TextView)findViewById(R.id.timeTextView);
         calendar = Calendar.getInstance();
 
