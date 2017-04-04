@@ -10,11 +10,8 @@ import org.joda.time.LocalTime;
  */
 
 public class Event {
-    String title;
-    String location; //consider making this use GPS, optionally.
-    LocalTime time;
-    LocalDate date;
+    String courseId;
+    String name;
 
-    //Need a way to model recurring events.
-    boolean isWeekly = false, isDaily = false, isMonthly = false;
+    EventSchedule schedule;
 }
