@@ -34,7 +34,7 @@ public interface StudyTablesAPIClient {
     @GET("/courses")
     Call<List<Course>> getCourses();
     @GET("/courses/{crn}")
-    Call<List<Course>> getCourse(@Path("crn") String crn);
+    Call<Course> getCourse(@Path("crn") String crn);
 
     @GET("/events")
     Call<List<Event>> getEvents();
