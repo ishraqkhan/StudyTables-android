@@ -93,4 +93,8 @@ public class PurdueCourse {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public static PurdueCourse createDummyForString(String s) {
+        return new PurdueCourse(null, UUID.randomUUID(), "123", s, 3, "This is a fake course created for dummy data", null);
+    }
 }

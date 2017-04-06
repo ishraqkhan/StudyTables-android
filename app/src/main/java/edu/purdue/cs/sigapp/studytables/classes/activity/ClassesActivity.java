@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import java.util.List;
 
+import butterknife.Bind;
 import edu.purdue.cs.sigapp.studytables.R;
 import edu.purdue.cs.sigapp.studytables.classes.CoursesListAdapter;
 import edu.purdue.cs.sigapp.studytables.classes.OnCourseClickListener;
@@ -23,7 +25,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ClassesActivity extends AppCompatActivity implements OnSubjectClickedListener, OnCourseClickListener {
+public class ClassesActivity extends AppCompatActivity
+        implements OnSubjectClickedListener, OnCourseClickListener {
     private RecyclerView mRecyclerView;
     private SubjectsListAdapter subjectsListAdapter;
 
@@ -31,6 +34,10 @@ public class ClassesActivity extends AppCompatActivity implements OnSubjectClick
     private List<PurdueSubject> subjects;
 
     private CoursesListAdapter coursesListAdapter;
+
+    @Bind(R.id.location_activity_toolbar)
+    Toolbar mToolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,13 @@ public class ClassesActivity extends AppCompatActivity implements OnSubjectClick
         initRecyclerView();
 
         loadPurdueIOSubjects();
+
+        initToolbar();
+    }
+
+    private void initToolbar() {
+        mToolbar.setTitle("Classes List");
+        setSupportActionBar(mToolbar);
     }
 
     private void initRecyclerView() {
