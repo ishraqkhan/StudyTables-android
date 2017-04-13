@@ -26,7 +26,11 @@
             android:label="@string/title_activity_class_details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".scheduling.model.EventDetailsActivity" />
-        <activity android:name=".HomescreenActivity"></activity>
+        <activity android:name=".HomescreenActivity" />
+        <activity
+            android:name=".ClassEventsActivity"
+            android:label="@string/title_activity_class_events"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

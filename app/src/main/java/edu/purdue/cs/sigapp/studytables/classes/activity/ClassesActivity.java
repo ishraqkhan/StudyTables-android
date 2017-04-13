@@ -11,6 +11,7 @@ import android.util.Log;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import edu.purdue.cs.sigapp.studytables.R;
 import edu.purdue.cs.sigapp.studytables.classes.CoursesListAdapter;
 import edu.purdue.cs.sigapp.studytables.classes.OnCourseClickListener;
@@ -43,6 +44,7 @@ public class ClassesActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classes);
+        ButterKnife.bind(this);
         apiInterface = PurdueIOClient.getClient().create(ApiInterface.class);
 
         initRecyclerView();
@@ -53,8 +55,8 @@ public class ClassesActivity extends AppCompatActivity
     }
 
     private void initToolbar() {
-        mToolbar.setTitle("Classes List");
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("Classes List");
     }
 
     private void initRecyclerView() {

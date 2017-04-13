@@ -2,4 +2,5 @@
     <string name="app_name">StudyTables</string>
     <string name="login">Login</string>
     <string name="title_activity_class_details">ClassDetailsActivity</string>
+    <string name="title_activity_class_events">ClassEventsActivity</string>
 </resources>

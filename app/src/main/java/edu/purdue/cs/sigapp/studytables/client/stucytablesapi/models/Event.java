@@ -17,4 +17,14 @@ public class Event {
 
     //Need a way to model recurring events.
     boolean isWeekly = false, isDaily = false, isMonthly = false;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public static Event createDummyEventforString(String title) {
+        Event e = new Event();
+        e.title = title;
+        return e;
+    }
 }

@@ -76,6 +76,9 @@ public class HomescreenActivity extends AppCompatActivity
     public void onCourseClicked(PurdueCourse course) {
         Toast.makeText(this,
                 "You clicked a user's fake course. Do something here", Toast.LENGTH_SHORT).show();
+
+        Intent classListIntent = new Intent(this, ClassEventsActivity.class);
+        startActivity(classListIntent);
     }
 
     @Override
